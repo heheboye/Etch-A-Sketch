@@ -10,6 +10,7 @@ body {
   align-items: center;
   align-self: center;
   min-height: 100vh;
+  background-color: gray;
 }
 
 .container {
@@ -18,10 +19,10 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  background-color: white;
 }
 
 .squares {
-  border: 1px solid black;
   width: 32px;
   height: 32px;
 }
