@@ -2,9 +2,16 @@ const container = document.querySelector(".container");
 const squareDiv = document.createElement('div');
 squareDiv.classList.add('squares');
 
-for (let i = 0; i < 256; i++) {
+let trigger = false;
+
+container.addEventListener('mousedown', () => trigger = true);
+container.addEventListener('mouseup', () => trigger = false);
+container.addEventListener('mouseover', holdToDraw);
+
+// fill the container with the square divs to draw on
+for (let i = 0; i < 1024; i++) {
   container.appendChild(squareDiv.cloneNode(true));
-  container.lastChild.addEventListener('mouseover', changeColor);
+  container.lastChild.addEventListener('mousedown', changeColor);
 }
 
 function randomColor() {
@@ -15,26 +22,36 @@ function randomColor() {
 }
 
 function changeColor(e) {
-  if (document.getElementById('colors').value == 'rainbow') {
+  if (document.getElementById('rainbow').checked == true) {
     e.target.style.backgroundColor = randomColor();
   } else {
-    e.target.style.backgroundColor = document.getElementById('colors').value;
+    e.target.style.backgroundColor = document.getElementById('color').value;
   }
 };
 
-eventType = document.getElementById('events');
-eventType.addEventListener('change', changeEventType);
-
-function changeEventType(e) {
-  if (e.target.value == 'mouseover') {
+function holdToDraw(e) {
+  if (trigger == true) {
     Array.from(container.children).forEach((element) => {
-      element.removeEventListener('click', changeColor);
-      element.addEventListener('mouseover', changeColor);
+      element.addEventListener('mouseenter', changeColor);
     });
   } else {
     Array.from(container.children).forEach((element) => {
-      element.removeEventListener('mouseover', changeColor);
-      element.addEventListener('click', changeColor);
+      element.removeEventListener('mouseenter', changeColor);
+    });
+  }
+}
+
+gridSwitch = document.getElementById('grid');
+gridSwitch.addEventListener('change', gridView);
+
+function gridView(e) {
+  if (e.target.checked == true) {
+    Array.from(container.children).forEach((element) => {
+      element.classList.toggle('grid');
+    });
+  } else {
+    Array.from(container.children).forEach((element) => {
+      element.classList.toggle('grid');
     });
   }
 }

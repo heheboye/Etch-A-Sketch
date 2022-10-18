@@ -9,17 +9,26 @@
   <title>Etch-A-Sketch</title>
 </head>
 <body>
-  <select name="colors" id="colors">
-    <option value="black">Black</option>
-    <option value="red">Red</option>
-    <option value="green">Green</option>
-    <option value="blue">Blue</option>
-    <option value="rainbow">Rainbow</option>
-  </select>
-  <select name="events" id="events">
-    <option value="mouseover">Mouse over!</option>
-    <option value="click">Clicking!</option>
-  </select>
+  <div class="settings">
+    <div class="configs">
+      Rainbow: 
+      <label class="switch">
+        <input id="rainbow" type="checkbox">
+        <span class="slider"> </span>
+      </label>
+    </div>
+    <div class="configs">
+      Grid: 
+      <label class="switch">
+        <input id="grid" type="checkbox">
+        <span class="slider"> </span>
+      </label>
+    </div>
+    <div class="configs">
+      Color: 
+      <input class="switch" type="color" id="color" name="color" value="#e66465">
+    </div>
+  </div>
   <div class="container"></div>
 </body>
 </html>
