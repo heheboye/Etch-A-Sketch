@@ -16,15 +16,10 @@ body {
 .container {
   width: 512px;
   height: 512px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(32, auto);
+  grid-template-rows: repeat(32, auto);
   background-color: white;
-}
-
-.squares {
-  width: 16px;
-  height: 16px;
 }
 
 .grid {
@@ -43,6 +38,11 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+button {
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 /* --------------------------- */
