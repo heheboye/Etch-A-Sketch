@@ -7,9 +7,9 @@ container.addEventListener('mousedown', () => trigger = true);
 container.addEventListener('mouseup', () => trigger = false);
 container.addEventListener('mouseover', holdToDraw);
 
-// (dafault grid 32x32 pixels 512x512 container) fill the container with the square divs to draw on
 for (let i = 0; i < 1024; i++) {
   container.appendChild(pixelDiv.cloneNode(true));
+  container.lastChild.style.cssText = `width: ${500 / 32}px; height: ${500 / 32}px`;
   container.lastChild.addEventListener('mousedown', changeColor);
 };
 
@@ -18,8 +18,8 @@ newGridButton.addEventListener('click', newGrid)
 
 function newGrid() {
   let size = parseInt(prompt("Syze?"));
-  if (typeof(size) !== 'number' || size > 64 || 512 % size !== 0) {
-    alert("Number must be under 64 and 512 diveded by that number should have no remainder.");
+  if (typeof(size) !== 'number' || size > 100) {
+    alert("Max number is a 100 bro.");
   } else {
     container.style.cssText = `grid-template-columns: repeat(${size}, auto); grid-template-rows: repeat(${size}, auto)`;
 
@@ -29,6 +29,7 @@ function newGrid() {
 
     for (let i = 0; i < size * size ; i++) {
       container.appendChild(pixelDiv.cloneNode(true));
+      container.lastChild.style.cssText = `width: ${500 / size}px; height: ${500 / size}px`;
       container.lastChild.addEventListener('mousedown', changeColor);
     }
   }
